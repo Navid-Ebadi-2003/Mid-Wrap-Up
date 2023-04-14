@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Lecture4Exercises {
 
     /*
@@ -5,7 +7,16 @@ public class Lecture4Exercises {
      *   lecture 4 page 15
      */
     public long factorial(int n) {
-        return 0L;
+        if(n==0){
+            return 1;
+        }
+        else {
+            int m =1;
+            for(int i =n ; i>1 ; i--){
+                m*=i;
+            }
+            return m;
+        }
     }
 
     /*
@@ -14,7 +25,22 @@ public class Lecture4Exercises {
      *   lecture 4 page 19
      */
     public long fibonacci(int n) {
-        return 0;
+        long x=1;
+        long y=0;
+        long z=0;
+
+        if(n==1){
+            return 1;
+        }
+        else {
+            n--;
+            for (int i = 0; i < n; i++) {
+                z = x + y;
+                y = x;
+                x = z;
+            }
+            return z;
+        }
     }
 
     /*
@@ -22,7 +48,11 @@ public class Lecture4Exercises {
      *   lecture 4 page 19
      */
     public String reverse(String word) {
-        return null;
+        String R ="";
+        for(int i=word.length()-1 ; i>=0 ;i--){
+            R += word.charAt(i);
+        }
+        return R;
     }
 
     /*
@@ -32,7 +62,13 @@ public class Lecture4Exercises {
      *   lecture 4 page 19
      */
     public boolean isPalindrome(String line) {
-        return false;
+        String L = line.toLowerCase();
+        L = L.replaceAll("\\s+" , "");
+        if (L.equals(reverse(L))){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     /*
@@ -47,6 +83,19 @@ public class Lecture4Exercises {
      *   lecture 4 page 26
      */
     public char[][] dotPlot(String str1, String str2) {
-        return null;
+
+        char[][] arr = new char[str1.length()][str2.length()];
+
+        for (int i=0 ; i<str1.length();i++){
+            for (int g =0 ; g<str2.length() ; g++){
+                if(str1.charAt(i)==str2.charAt(g)){
+                    arr[i][g]='*';
+                }
+                else {
+                    arr[i][g]=' ';
+                }
+            }
+        }
+        return arr;
     }
 }
