@@ -30,7 +30,7 @@ public class Lecture5Exercises {
         Random random = new Random();
         String pass = "";
 
-        if(length>1) {
+        if(length>2) {
             for (int i = 0; i < length - 2; i++) {
                 int n = random.nextInt(26);
                 pass += chars.charAt(n);
@@ -45,6 +45,7 @@ public class Lecture5Exercises {
             return pass;
         }
         else {
+            System.err.println("length>2");
             return null;
         }
     }
