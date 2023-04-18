@@ -81,7 +81,6 @@ public class Lecture6Exercises {
                 }
                 if (isPrime){
                     N.add(i);
-                    System.out.println(i);
                 }
             }
         }
