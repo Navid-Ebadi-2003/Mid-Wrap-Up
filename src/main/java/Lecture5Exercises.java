@@ -1,3 +1,6 @@
+import java.util.Random;
+import java.util.ArrayList;
+
 public class Lecture5Exercises {
 
     /*
@@ -6,7 +9,14 @@ public class Lecture5Exercises {
      *   lecture 5 page 14
      */
     public String weakPassword(int length) {
-        return null;
+        String pass = "";
+        Random random = new Random();
+
+        for (int i = 0; i<length ; i++){
+            char c = (char) (random.nextInt(26) + 'a');
+            pass+=c;
+        }
+        return pass;
     }
 
     /*
@@ -15,7 +25,29 @@ public class Lecture5Exercises {
      *   lecture 5 page 14
      */
     public String strongPassword(int length) throws Exception {
-        return null;
+
+        String chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+<>?:{}|1234567890";
+        Random random = new Random();
+        String pass = "";
+
+        if(length>2) {
+            for (int i = 0; i < length - 2; i++) {
+                int n = random.nextInt(26);
+                pass += chars.charAt(n);
+            }
+
+            int n = random.nextInt(19) + 26;
+            pass += chars.charAt(n);
+
+            n = random.nextInt(10) + 45;
+            pass += chars.charAt(n);
+
+            return pass;
+        }
+        else {
+            System.err.println("length>2");
+            return null;
+        }
     }
 
     /*
@@ -27,6 +59,31 @@ public class Lecture5Exercises {
      *   lecture 5 page 17
      */
     public boolean isFiboBin(int n) {
+        ArrayList<Integer> fibo = new ArrayList<Integer>();
+        int a =1;
+        int b=0;
+        int c=0;
+
+        while (n>=a){
+            fibo.add(a);
+            c=a+b;
+            b=a;
+            a=c;
+        }
+
+        for(int i = 0; i<fibo.size();i++) {
+            String binary = Integer.toBinaryString(fibo.get(i));
+            int ones = 0;
+            for(int g =0 ; g<binary.length(); g++){
+                if(binary.charAt(g)=='1'){
+                    ones++;
+                }
+            }
+            if(n==(fibo.get(i)+ones)){
+                return true;
+            }
+        }
+
         return false;
     }
 }
